@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Quiz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #999;
+            font-size: 14px;
+        }
+
+        .quiz-container {
+            display: none;
+        }
+
+        .quiz-container.active {
+            display: block;
+        }
+
+        .question-block {
+            margin-bottom: 25px;
+        }
+
+        .question-block.active {
+            display: block;
+        }
+
+        .question-block {
+            display: none;
+        }
+
+        .question {
+            font-size: 18px;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option:hover {
+            background: #f0f0f0;
+            border-color: #667eea;
+        }
+
+        .option input {
+            margin-right: 10px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+
+        .option label {
+            cursor: pointer;
+            flex: 1;
+            font-size: 15px;
+            color: #333;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        button {
+            padding: 12px 30px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-next {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-next:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+
+        .btn-submit {
+            background: #48bb78;
+            color: white;
+        }
+
+        .btn-submit:hover {
+            background: #38a169;
+            transform: translateY(-2px);
+        }
+
+        .btn-restart {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-restart:hover {
+            background: #5568d3;
+        }
+
+        .progress {
+            margin-bottom: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #667eea;
+            transition: width 0.3s ease;
+        }
+
+        .results {
+            display: none;
+            text-align: center;
+        }
+
+        .results.active {
+            display: block;
+        }
+
+        .score {
+            font-size: 48px;
+            color: #48bb78;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .result-message {
+            font-size: 20px;
+            color: #333;
+            margin: 15px 0;
+        }
+
+        .result-details {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .result-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-q {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .result-answer {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .correct {
+            color: #48bb78;
+        }
+
+        .incorrect {
+            color: #f56565;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 Quiz Time</h1>
+            <p>Test your knowledge</p>
+        </div>
+
+        <div class="quiz-container active">
+            <div class="progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <span id="questionNumber">Question 1</span> of <span id="totalQuestions">5</span>
+            </div>
+
+            <div id="questionsContainer"></div>
+
+            <div class="button-group">
+                <button class="btn-next" id="nextBtn" onclick="nextQuestion()">Next</button>
+                <button class="btn-submit" id="submitBtn" onclick="submitQuiz()" style="display: none;">Submit Quiz</button>
+            </div>
+        </div>
+
+        <div class="results" id="results">
+            <h2>Quiz Completed!</h2>
+            <div class="score" id="scoreDisplay">0/0</div>
+            <div class="result-message" id="resultMessage"></div>
+            <div class="result-details" id="resultDetails"></div>
+            <button class="btn-restart" onclick="restartQuiz()">Restart Quiz</button>
+        </div>
+    </div>
+
+    <script>
+        const quizData = [
+            {
+                question: "What is the capital of France?",
+                options: ["London", "Berlin", "Paris", "Madrid"],
+                correct: 2
+            },
+            {
+                question: "Which planet is known as the Red Planet?",
+                options: ["Venus", "Mars", "Jupiter", "Saturn"],
+                correct: 1
+            },
+            {
+                question: "What is 2 + 2?",
+                options: ["3", "4", "5", "6"],
+                correct: 1
+            },
+            {
+                question: "Who wrote Romeo and Juliet?",
+                options: ["Jane Austen", "Charles Dickens", "William Shakespeare", "Mark Twain"],
+                correct: 2
+            },
+            {
+                question: "What is the largest ocean on Earth?",
+                options: ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
+                correct: 3
+            }
+        ];
+
+        let currentQuestion = 0;
+        let answers = new Array(quizData.length).fill(null);
+
+        function initQuiz() {
+            document.getElementById('totalQuestions').textContent = quizData.length;
+            renderQuestion(0);
+        }
+
+        function renderQuestion(index) {
+            const container = document.getElementById('questionsContainer');
+            container.innerHTML = '';
+
+            const question = quizData[index];
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'question-block active';
+            questionDiv.innerHTML = `
+                <div class="question">${question.question}</div>
+                <div class="options" id="optionsContainer"></div>
+            `;
+
+            container.appendChild(questionDiv);
+
+            const optionsContainer = document.getElementById('optionsContainer');
+            question.options.forEach((option, i) => {
+                const optionDiv = document.createElement('div');
+                optionDiv.className = 'option';
+                optionDiv.innerHTML = `
+                    <input type="radio" id="option${i}" name="answer" value="${i}" ${answers[index] === i ? 'checked' : ''}>
+                    <label for="option${i}">${option}</label>
+                `;
+                optionsContainer.appendChild(optionDiv);
+
+                optionDiv.querySelector('input').addEventListener('change', () => {
+                    answers[index] = i;
+                });
+            });
+
+            updateProgress();
+            updateButtonState();
+        }
+
+        function updateProgress() {
+            const progress = ((currentQuestion + 1) / quizData.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('questionNumber').textContent = 'Question ' + (currentQuestion + 1);
+        }
+
+        function updateButtonState() {
+            const nextBtn = document.getElementById('nextBtn');
+            const submitBtn = document.getElementById('submitBtn');
+
+            if (currentQuestion === quizData.length - 1) {
+                nextBtn.style.display = 'none';
+                submitBtn.style.display = 'block';
+            } else {
+                nextBtn.style.display = 'block';
+                submitBtn.style.display = 'none';
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < quizData.length - 1) {
+                currentQuestion++;
+                renderQuestion(currentQuestion);
+            }
+        }
+
+        function submitQuiz() {
+            let score = 0;
+            answers.forEach((answer, index) => {
+                if (answer === quizData[index].correct) {
+                    score++;
+                }
+            });
+
+            showResults(score);
+        }
+
+        function showResults(score) {
+            document.querySelector('.quiz-container').classList.remove('active');
+            document.getElementById('results').classList.add('active');
+
+            document.getElementById('scoreDisplay').textContent = score + '/' + quizData.length;
+
+            let percentage = (score / quizData.length) * 100;
+            let message = '';
+
+            if (percentage === 100) {
+                message = 'Perfect! You got all questions correct! 🎉';
+            } else if (percentage >= 80) {
+                message = 'Excellent! Great job! 🌟';
+            } else if (percentage >= 60) {
+                message = 'Good! You passed the quiz! 👍';
+            } else if (percentage >= 40) {
+                message = 'Average. Keep practicing! 📚';
+            } else {
+                message = 'You can do better. Try again! 💪';
+            }
+
+            document.getElementById('resultMessage').textContent = message;
+
+            let resultDetailsHTML = '';
+            answers.forEach((answer, index) => {
+                const isCorrect = answer === quizData[index].correct;
+                resultDetailsHTML += `
+                    <div class="result-item">
+                        <div class="result-q">Q${index + 1}: ${quizData[index].question}</div>
+                        <div class="result-answer">
+                            <span class="${isCorrect ? 'correct' : 'incorrect'}">
+                                Your answer: ${answer !== null ? quizData[index].options[answer] : 'Not answered'}
+                            </span>
+                            ${!isCorrect ? `<br><span class="correct">Correct answer: ${quizData[index].options[quizData[index].correct]}</span>` : ''}
+                        </div>
+                    </div>
+                `;
+            });
+
+            document.getElementById('resultDetails').innerHTML = resultDetailsHTML;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            answers = new Array(quizData.length).fill(null);
+            document.querySelector('.quiz-container').classList.add('active');
+            document.getElementById('results').classList.remove('active');
+            renderQuestion(0);
+        }
+
+        // Initialize quiz when page loads
+        window.addEventListener('load', initQuiz);
+    </script>
+</body>
+</html>
