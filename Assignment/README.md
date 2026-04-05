@@ -1,6 +1,9 @@
 # FoodHub - Food Delivery Landing Page
 
 A modern, responsive landing page for a fictional food delivery company with all essential sections for a professional service website.
+<img width="1710" height="1107" alt="Screenshot 2026-04-05 at 9 03 12 PM" src="https://github.com/user-attachments/assets/be8f0840-ea72-4161-9cf6-10c305398388" />
+<img width="1710" height="1107" alt="Screenshot 2026-04-05 at 9 03 04 PM" src="https://github.com/user-attachments/assets/565413d9-0585-49da-84e6-19197049a74b" />
+<img width="1710" height="1107" alt="Screenshot 2026-04-05 at 9 02 55 PM" src="https://github.com/user-attachments/assets/7dca759f-734a-45ff-88b4-90aaacdb8f07" />
 
 ## Features
 
@@ -26,101 +29,6 @@ Assignment/
 └── README.md          # This file
 ```
 
-## Sections Included
-
-### 1. Navigation Bar
-- Sticky navigation with smooth scrolling links
-- Logo branding
-- Responsive mobile menu
-
-### 2. Hero/Welcome Banner
-- Large headline with compelling message
-- Two call-to-action buttons (Order Now, Learn More)
-- Hero image/illustration
-- Gradient background
-
-### 3. Features Section
-- 6 feature cards with emoji icons
-- Benefits highlighted:
-  - ⚡ Super Fast Delivery
-  - 🌶️ Fresh & Quality Food
-  - 💰 Best Prices
-  - 🔒 Secure Payment
-  - 📱 Easy Mobile App
-  - 🎯 24/7 Support
-
-### 4. Service Areas
-- 6 location cards showing delivery zones
-- Status badges (Active/Coming Soon)
-- Restaurant partner count for each area
-- Hover effects for interactivity
-
-### 5. Customer Reviews
-- 6 testimonial cards
-- Star ratings
-- Customer names and verification
-- Avatar styling
-
-### 6. Statistics
-- 4 impressive metrics
-- Happy customers count
-- Restaurant partnerships
-- Orders delivered
-- Average rating
-
-### 7. Contact Information
-- Phone number
-- Email address
-- Physical address
-- Business hours
-
-### 8. Quick Order Form
-- Name, email, phone fields
-- Delivery address input
-- Special instructions textarea
-- Submit button
-
-### 9. Newsletter Signup
-- Email subscription section
-- Subscribe button
-- Attractive gradient background
-
-### 10. Footer
-- Company description
-- Quick navigation links
-- Legal pages links
-- Social media links
-- Copyright information
-
-## Design Features
-
-### Color Scheme
-```
-Primary: #FF6B6B (Red)
-Secondary: #FFA502 (Orange)
-Dark: #2C3E50 (Dark Blue)
-Light: #F8F9FA (Light Gray)
-```
-
-### Typography
-- Font Family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif
-- Responsive font sizes
-- Clear hierarchy
-
-### Responsive Breakpoints
-- Desktop: 1200px and above
-- Tablet: 768px - 1199px
-- Mobile: Below 768px
-- Small Mobile: Below 480px
-
-## Interactive Features
-
-✨ **Smooth Scrolling** - Anchor links scroll smoothly to sections  
-🎯 **Form Submission** - Submit order and newsletter forms  
-🎨 **Hover Effects** - Interactive hover animations on cards and buttons  
-✨ **Scroll Animations** - Elements fade in as you scroll  
-📱 **Mobile Responsive** - Fully responsive design with mobile-first approach  
-
 ## How to Use
 
 1. **Open the file**
@@ -141,102 +49,10 @@ Light: #F8F9FA (Light Gray)
 3. **View in browser**
    - Open `http://localhost:8000` (or your chosen port)
 
-## Code Highlights
 
-### HTML Structure
-- Semantic HTML5 elements
-- Proper heading hierarchy
-- Accessible form elements
-- Mobile-first approach
-
-### CSS Features
-- CSS Grid for layouts
-- Flexbox for alignment
-- CSS variables for theming
-- Media queries for responsiveness
-- Gradient backgrounds
-- Box shadows and transitions
-
-### JavaScript Functionality
-- Smooth scroll navigation
-- Dynamic form handling
-- Scroll animations
-- Interactive effects
-
-## Browser Compatibility
-
-✅ Chrome (latest)  
-✅ Firefox (latest)  
-✅ Safari (latest)  
-✅ Edge (latest)  
-✅ Mobile browsers  
-
-## Customization Tips
-
-### Change Colors
-Edit the `:root` variables in `style.css`:
-```css
-:root {
-    --primary-color: #FF6B6B;
-    --secondary-color: #FFA502;
-    --dark-color: #2C3E50;
-    --light-color: #F8F9FA;
-}
-```
-
-### Update Content
-- Replace company name (FoodHub) with your brand
-- Update phone number and email in contact section
-- Modify service areas and reviews
-- Update social media links in footer
-
-### Add Images
-Replace SVG placeholders with actual images:
-```html
-<img src="your-image.jpg" alt="Description">
-```
-
-## Performance Optimization
-
-- Lightweight design
-- Minimal dependencies (no frameworks)
-- Fast loading times
-- Optimized images
-- Smooth animations using CSS transforms
-
-## SEO Considerations
-
-- Semantic HTML structure
-- Meta tags ready
-- Proper heading hierarchy
-- Alt text for images
-- Mobile-friendly design
-- Fast page load time
-
-## Future Enhancements
-
-- Add real restaurant listings
-- Integrate with food ordering API
-- Add user authentication
-- Implement payment gateway
-- Add restaurant ratings and filters
-- Real-time order tracking
-- Mobile app links
-- Live chat support
-
-## Credits
-
-Created as a web development assignment showcasing:
-- Modern web design principles
-- Responsive design practices
-- User experience best practices
-- Clean code structure
-- Professional styling
 
 ## Author
 
-Created as a Web Development Learning Project
+Created by Harshit Rao as a Web Development Learning Project
 
-## License
 
-Free to use for educational and commercial purposes.
