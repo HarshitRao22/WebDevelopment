@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Search Results - Contact Manager{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>🔍 Search Results</h1>
+    <p class="subtitle">Searching for: <strong>"{{ query }}"</strong></p>
+</div>
+
+<div class="search-box">
+    <form method="GET" action="{{ url_for('search') }}" class="search-form">
+        <input type="text" name="q" placeholder="Search by name, email, or phone..." value="{{ query }}" required>
+        <button type="submit" class="btn btn-primary">Search</button>
+        <a href="{{ url_for('index') }}" class="btn btn-secondary">View All</a>
+    </form>
+</div>
+
+{% if results %}
+<p class="results-count">Found <strong>{{ results|length }}</strong> contact(s)</p>
+
+<div class="contacts-grid">
+    {% for contact in results %}
+        <div class="contact-card">
+            <div class="contact-header">
+                <h3>{{ contact.name }}</h3>
+                <div class="contact-actions">
+                    <a href="{{ url_for('view_contact', contact_id=contact.id) }}" class="btn-icon" title="View">👁️</a>
+                    <a href="{{ url_for('edit_contact', contact_id=contact.id) }}" class="btn-icon" title="Edit">✏️</a>
+                    <form method="POST" action="{{ url_for('delete_contact', contact_id=contact.id) }}" style="display:inline;">
+                        <button type="submit" class="btn-icon btn-delete" title="Delete" onclick="return confirm('Delete this contact?');">🗑️</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="contact-details">
+                {% if contact.email %}
+                    <p><strong>📧 Email:</strong> <a href="mailto:{{ contact.email }}">{{ contact.email }}</a></p>
+                {% endif %}
+                {% if contact.phone %}
+                    <p><strong>📞 Phone:</strong> <a href="tel:{{ contact.phone }}">{{ contact.phone }}</a></p>
+                {% endif %}
+                {% if contact.address %}
+                    <p><strong>📍 Address:</strong> {{ contact.address }}</p>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="empty-state">
+    <h2>No contacts found</h2>
+    <p>Try searching with different keywords or <a href="{{ url_for('add_contact') }}">add a new contact</a></p>
+</div>
+{% endif %}
+{% endblock %}

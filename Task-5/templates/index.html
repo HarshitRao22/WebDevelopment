@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}All Contacts - Contact Manager{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>📇 Your Contacts</h1>
+    <p class="subtitle">Total Contacts: <strong>{{ total_contacts }}</strong></p>
+</div>
+
+{% if contacts %}
+<div class="search-box">
+    <form method="GET" action="{{ url_for('search') }}" class="search-form">
+        <input type="text" name="q" placeholder="🔍 Search by name, email, or phone..." required>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+</div>
+
+<div class="contacts-grid">
+    {% for contact in contacts %}
+        <div class="contact-card">
+            <div class="contact-header">
+                <h3>{{ contact.name }}</h3>
+                <div class="contact-actions">
+                    <a href="{{ url_for('view_contact', contact_id=contact.id) }}" class="btn-icon" title="View">👁️</a>
+                    <a href="{{ url_for('edit_contact', contact_id=contact.id) }}" class="btn-icon" title="Edit">✏️</a>
+                    <form method="POST" action="{{ url_for('delete_contact', contact_id=contact.id) }}" style="display:inline;">
+                        <button type="submit" class="btn-icon btn-delete" title="Delete" onclick="return confirm('Delete this contact?');">🗑️</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="contact-details">
+                {% if contact.email %}
+                    <p><strong>📧 Email:</strong> <a href="mailto:{{ contact.email }}">{{ contact.email }}</a></p>
+                {% endif %}
+                {% if contact.phone %}
+                    <p><strong>📞 Phone:</strong> <a href="tel:{{ contact.phone }}">{{ contact.phone }}</a></p>
+                {% endif %}
+                {% if contact.address %}
+                    <p><strong>📍 Address:</strong> {{ contact.address }}</p>
+                {% endif %}
+            </div>
+            
+            <div class="contact-meta">
+                <small>Added: {{ contact.created_at }}</small>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="empty-state">
+    <h2>No contacts yet</h2>
+    <p>You haven't added any contacts. <a href="{{ url_for('add_contact') }}">Add your first contact</a></p>
+</div>
+{% endif %}
+{% endblock %}

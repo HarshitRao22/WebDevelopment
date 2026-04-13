@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}{{ contact.name }} - Contact Manager{% endblock %}
+
+{% block content %}
+<div class="contact-view">
+    <div class="contact-header-view">
+        <h1>{{ contact.name }}</h1>
+        <div class="contact-view-actions">
+            <a href="{{ url_for('edit_contact', contact_id=contact.id) }}" class="btn btn-warning">✏️ Edit</a>
+            <form method="POST" action="{{ url_for('delete_contact', contact_id=contact.id) }}" style="display:inline;">
+                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this contact?');">🗑️ Delete</button>
+            </form>
+            <a href="{{ url_for('index') }}" class="btn btn-secondary">← Back</a>
+        </div>
+    </div>
+
+    <div class="contact-details-full">
+        <div class="detail-section">
+            <h3>Contact Information</h3>
+            <div class="detail-row">
+                <span class="detail-label">📧 Email:</span>
+                <span class="detail-value">
+                    {% if contact.email %}
+                        <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
+                    {% else %}
+                        <em>Not provided</em>
+                    {% endif %}
+                </span>
+            </div>
+
+            <div class="detail-row">
+                <span class="detail-label">📞 Phone:</span>
+                <span class="detail-value">
+                    {% if contact.phone %}
+                        <a href="tel:{{ contact.phone }}">{{ contact.phone }}</a>
+                    {% else %}
+                        <em>Not provided</em>
+                    {% endif %}
+                </span>
+            </div>
+
+            <div class="detail-row">
+                <span class="detail-label">📍 Address:</span>
+                <span class="detail-value">
+                    {% if contact.address %}
+                        {{ contact.address }}
+                    {% else %}
+                        <em>Not provided</em>
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+
+        {% if contact.notes %}
+        <div class="detail-section">
+            <h3>Notes</h3>
+            <p class="notes-text">{{ contact.notes }}</p>
+        </div>
+        {% endif %}
+
+        <div class="detail-section">
+            <h3>Timestamps</h3>
+            <div class="detail-row">
+                <span class="detail-label">Created:</span>
+                <span class="detail-value">{{ contact.created_at }}</span>
+            </div>
+            {% if contact.updated_at != contact.created_at %}
+            <div class="detail-row">
+                <span class="detail-label">Last Updated:</span>
+                <span class="detail-value">{{ contact.updated_at }}</span>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }} - My Blog{% endblock %}
+
+{% block content %}
+<div class="post-view">
+    <article>
+        <h1>{{ post.title }}</h1>
+        <div class="post-meta-view">
+            <span>📅 Created: {{ post.created_at }}</span>
+            {% if post.updated_at != post.created_at %}
+                <span>✏️ Updated: {{ post.updated_at }}</span>
+            {% endif %}
+        </div>
+        
+        <div class="post-content">
+            {{ post.content | replace('\n', '<br>') }}
+        </div>
+
+        <div class="post-actions">
+            <a href="{{ url_for('edit', post_id=post.id) }}" class="btn btn-warning">✏️ Edit</a>
+            <form method="POST" action="{{ url_for('delete', post_id=post.id) }}" style="display:inline;">
+                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this post?');">🗑️ Delete</button>
+            </form>
+            <a href="{{ url_for('index') }}" class="btn btn-secondary">← Back to Home</a>
+        </div>
+    </article>
+</div>
+{% endblock %}

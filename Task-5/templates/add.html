@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Add New Contact - Contact Manager{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h1>Add New Contact</h1>
+    
+    <form method="POST" class="contact-form">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" name="name" placeholder="John Doe" required maxlength="100">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="john@example.com">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890 or +1234567890">
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" placeholder="123 Main St, City, State">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="notes">Notes</label>
+            <textarea id="notes" name="notes" rows="4" placeholder="Add any additional notes..."></textarea>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">✅ Add Contact</button>
+            <a href="{{ url_for('index') }}" class="btn btn-secondary">❌ Cancel</a>
+        </div>
+    </form>
+
+    <div class="form-hint">
+        <p><strong>Hints:</strong></p>
+        <ul>
+            <li>Name is required and must be unique</li>
+            <li>Email must be valid format (example@domain.com)</li>
+            <li>Phone must have at least 10 digits</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
