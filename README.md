@@ -6,8 +6,8 @@ A comprehensive collection of web development projects showcasing HTML, CSS, Jav
 
 ### Static Web Pages
 - **Task-1**: 📝 Portfolio Website - Personal portfolio showcase
-- **Task-2**: 📱 Responsive Layout Project - Mobile-friendly responsive design
-- **Task-3**: ✨ Interactive Features - Dynamic web interactions
+- **Task-2**: 📱 To-Do List - Mobile-friendly responsive design
+- **Task-3**: ✨ Quiz - Dynamic web interactions
 
 ### Flask Web Applications
 - **Task-4**: 📚 Blog Application - Create, Read, Update, Delete blog posts with timestamps
@@ -18,8 +18,8 @@ A comprehensive collection of web development projects showcasing HTML, CSS, Jav
 ### Static Websites (GitHub Pages)
 View live demos online:
 - [Task-1 Portfolio](https://harshitrao22.github.io/WebDevelopment/Task-1/)
-- [Task-2 Responsive Layout](https://harshitrao22.github.io/WebDevelopment/Task-2/)
-- [Task-3 Interactive Features](https://harshitrao22.github.io/WebDevelopment/Task-3/)
+- [Task-2 To-Do List](https://harshitrao22.github.io/WebDevelopment/Task-2/)
+- [Task-3 Quiz](https://harshitrao22.github.io/WebDevelopment/Task-3/)
 
 ### Flask Applications (Local Only)
 Flask apps must be run locally using the instructions below.
