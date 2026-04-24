@@ -8,6 +8,7 @@ A comprehensive collection of web development projects showcasing HTML, CSS, Jav
 - **Task-1**: 📝 Portfolio Website - Personal portfolio showcase
 - **Task-2**: 📱 To-Do List - Mobile-friendly responsive design
 - **Task-3**: ✨ Quiz - Dynamic web interactions
+- **Task-6**: 🏢 Company Landing Page - Professional company website with modern design
 
 ### Flask Web Applications
 - **Task-4**: 📚 Blog Application - Create, Read, Update, Delete blog posts with timestamps
@@ -20,6 +21,7 @@ View live demos online:
 - [Task-1 Portfolio](https://harshitrao22.github.io/WebDevelopment/Task-1/)
 - [Task-2 To-Do List](https://harshitrao22.github.io/WebDevelopment/Task-2/)
 - [Task-3 Quiz](https://harshitrao22.github.io/WebDevelopment/Task-3/)
+- [Task-6 Company Landing Page](https://harshitrao22.github.io/WebDevelopment/Task-6/)
 
 ### Flask Applications (Local Only)
 Flask apps must be run locally using the instructions below.
@@ -33,7 +35,11 @@ WebDevelopment/
 ├── Task-2/                 # Responsive Layout HTML
 │   └── index.html
 ├── Task-3/                 # Interactive Features HTML
-│   └── index.html
+│   └── i6/                 # Company Landing Page
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
+├── Task-ndex.html
 ├── Task-4/                 # Flask Blog Application
 │   ├── app.py
 │   ├── requirements.txt
@@ -65,7 +71,7 @@ WebDevelopment/
 ## How to View Static Websites
 
 ### Option 1: View Online on GitHub Pages
-Simply click the live demo links above!
+Simply click the live demo links above!`Task-3/index.html`, or `Task-6
 
 ### Option 2: View Locally
 1. Clone the repository: `git clone https://github.com/HarshitRao22/WebDevelopment.git`
@@ -151,6 +157,20 @@ Simply click the live demo links above!
 - Responsive Design
 
 ## Features
+
+### Task-6: Company Landing Page
+✅ Professional hero section with call-to-action  
+✅ Services showcase with 6 different service cards  
+✅ About section with company statistics  
+✅ Portfolio section with 6 featured projects  
+✅ Contact form with validation and submission  
+✅ Responsive design (mobile, tablet, desktop)  
+✅ Smooth scroll navigation  
+✅ Mobile hamburger menu  
+✅ Newsletter subscription form  
+✅ Social media links in footer  
+✅ Modern gradient design and animations  
+✅ Interactive scroll animations  
 
 ### Task-4: Blog Application
 ✅ Create blog posts  
