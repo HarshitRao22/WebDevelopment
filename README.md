@@ -5,7 +5,7 @@ A comprehensive collection of web development projects showcasing HTML, CSS, Jav
 ## Tasks
 
 ### Static Web Pages
-- **Task-1**: 📝 Portfolio Website - Personal portfolio showcase
+- **Task-1**: 📝 Portfolio Website - Personal portfolio showcase.
 - **Task-2**: 📱 To-Do List - Mobile-friendly responsive design
 - **Task-3**: ✨ Quiz - Dynamic web interactions
 - **Task-6**: 🏢 Company Landing Page - Professional company website with modern design
