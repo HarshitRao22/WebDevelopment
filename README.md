@@ -78,7 +78,7 @@ Simply click the live demo links above!`Task-3/index.html`, or `Task-6
 2. Navigate to the project folder
 3. Open `Task-1/index.html`, `Task-2/index.html`, or `Task-3/index.html` in your browser
 
-## How to Run Flask Applications
+## How to Run Flask Applications-
 
 ### Prerequisites
 - Python 3.7 or higher
